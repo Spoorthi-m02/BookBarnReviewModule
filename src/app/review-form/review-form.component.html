@@ -1,0 +1,19 @@
+<!-- review-form.component.html -->
+<div class="review-form">
+    <h2>Rate this Book</h2>
+    <div class="star-rating">
+      <i *ngFor="let star of stars; let i = index"
+         class="fa"
+         [ngClass]="stars[i] ? 'fa-star' : 'fa-star-o'"
+         (click)="setRating(i + 1)">
+      </i>
+    </div>
+    <p>Your Rating: {{ currentRating }}/5</p>
+  
+    <h3>Review</h3>
+    <textarea [(ngModel)]="reviewText" rows="5" placeholder="Write your review here..."></textarea>
+  
+    <button (click)="submitReview()">Submit Review</button>
+  </div>
+  
+
