@@ -1,10 +1,11 @@
-<!-- review-form.component.html -->
-<div class="review-form">
+
+
+  <div class="review-form">
     <h2>Rate this Book</h2>
     <div class="star-rating">
       <i *ngFor="let star of stars; let i = index"
          class="fa"
-         [ngClass]="stars[i] ? 'fa-star' : 'fa-star-o'"
+         [ngClass]="star ? 'fa-solid fa-star' : 'fa-regular fa-star'"
          (click)="setRating(i + 1)">
       </i>
     </div>
@@ -13,7 +14,16 @@
     <h3>Review</h3>
     <textarea [(ngModel)]="reviewText" rows="5" placeholder="Write your review here..."></textarea>
   
-    <button (click)="submitReview()">Submit Review</button>
+    <!-- Submit Button: Disabled when isSubmitting is true -->
+    <button (click)="submitReview()" [disabled]="isSubmitting">Submit Review</button>
+  
+    <!-- Success and Error Messages -->
+    <div *ngIf="submitSuccess" class="alert alert-success">
+      Your review has been submitted successfully!
+    </div>
+  
+    <div *ngIf="submitError" class="alert alert-danger">
+      {{ submitError }}
+    </div>
   </div>
   
-
